@@ -1,0 +1,69 @@
+{% extends "blog/base.html" %}
+{% load wagtailimages_tags wagtailcore_tags blogapp_tags%}
+{% block content %}
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Blog Entries Column -->
+            <div class="col-md-8">
+
+                <h1 class="my-4">Tech Blogs
+                </h1>
+                {% if search_term %}
+                    <header class="page-header">
+                        <h1 class="page-title">Search Results for <span>{{ search_type }}: {{ search_term }}</span></h1>
+                    </header>
+                {% endif %}
+                <!-- Blog Post -->
+                {% for post in posts %}
+                    <div class="card mb-4">
+                        {% image post.header_image fill-750x300 as header_image %}
+                        <img class="card-img-top" src="{{ header_image.url }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h2 class="card-title">{{ post.title }}</h2>
+                            <p class="card-text">
+                                {% if post.excerpt %}
+                                    {{ post.excerpt|markdown|safe }}
+                                {% else %}
+                                    {{ post.body|safe|truncatewords_html:50 }}
+                                {% endif %}
+                            </p>
+                            <a href="{{ post.url }}" class="btn btn-primary">Read More &rarr;</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                            Posted on {{ post.date| date:"M d Y" }} by
+                            <a>{{ post.owner }}</a>
+                        </div>
+                    </div>
+                {% endfor %}
+                <!-- Pagination -->
+            </div>
+
+            <!-- Sidebar Widgets Column -->
+            <div class="col-md-4">
+
+                <!-- Search Widget -->
+                <div class="card my-4">
+                    <h5 class="card-header">Search</h5>
+                    <div class="card-body">
+                        <form action="/blog/search" method="get">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="q" placeholder="Search for...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-secondary" type="submit">Go!</button>
+                              </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+{% endblock %}

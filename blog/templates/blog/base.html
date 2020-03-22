@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description"
+          content="{% block meta_description %}{{ blog_page.search_description }}{% endblock meta_description %}">
+    <meta name="author" content="">
+
+    <title>{% block title %}{{ blog_page.title }}{% if blog_page.description %} | {{ blog_page.description }}
+    {% endif %}{% endblock title %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://blackrockdigital.github.io/startbootstrap-blog-home/vendor/bootstrap/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://blackrockdigital.github.io/startbootstrap-blog-home/css/blog-home.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+{% block header %}
+    {% include 'blog/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+{% endblock %}
+
+
+
+{% block footer %}
+    {% include 'blog/footer.html' %}
+{% endblock %}
+
+<!-- Bootstrap core JavaScript -->
+<script src="https://blackrockdigital.github.io/startbootstrap-blog-home/vendor/jquery/jquery.min.js"></script>
+<script src="https://blackrockdigital.github.io/startbootstrap-blog-home/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
