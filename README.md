@@ -1,4 +1,4 @@
-# Integrate-wagtain-into-django
+# Integrate-wagtail-into-django
 Integrate wagtail blog management system to your existing django Project
 
 - git clone https://github.com/shahraizali/Integrate-wagtain-into-django.git
